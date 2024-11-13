@@ -21,11 +21,14 @@ const user = {
     },
 
     setRepositories(repositories) { 
-        this.repositories = repositories;
-        this.forks = repositories.forks_count;
-        this.stars = repositories.stars;
-        this.watchers = repositories.watchers_count;
-        this.language = repositories.language;
+        this.repositories = repositories.map(repo => ({
+            name: repo.name,
+            html_url: repo.html_url,
+            forks: repo.forks_count,
+            stars: repo.stargazers_count,
+            watchers: repo.watchers_count,
+            language: repo.language
+        }));
     }
 };
 
